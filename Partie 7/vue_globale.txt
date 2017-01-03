@@ -1,0 +1,23 @@
+﻿@startuml
+
+node "Client" {
+	[Stockage]
+	[Vue] --> [Actions]
+	[Actions] --> [Service]
+	[Stockage] ..> [Vue]
+}
+
+cloud "Serveur" {
+	[Service] --> HTTP
+	HTTP - [Routeur]
+	[Routeur] --> [Manager]
+	[Manager] --> [Modèle]
+	[Modèle] --> [Manager]
+	[Manager] --> [Stockage]
+}
+
+database "MongoDB" {
+	[Modèle] --> [Données]
+}
+
+@enduml

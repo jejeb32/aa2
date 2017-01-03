@@ -1,0 +1,131 @@
+﻿@startuml
+Visiteur <|-- Guide
+top to bottom direction
+
+Visiteur --> (Recherche)
+(Recherche) --> (Recherche par nom)
+(Recherche par nom) --> (profils)
+(Recherche par nom) --> (visites)
+(Recherche par nom) --> (informations sur les destinations)
+(Recherche) --> (Recherche par geolocalisation)
+(Recherche par geolocalisation) --> (guides)
+(Recherche par geolocalisation) --> (informations sur les destinations)
+
+@enduml
+
+@startuml
+'default
+top to bottom direction
+Visiteur <|-- Guide
+
+Visiteur --> (Profil)
+(Profil) --> (Visionner son profil)
+(Profil) --> (Visionner un autre profil)
+(Profil) --> (Modifer son profil)
+
+@enduml
+
+@startuml
+'default
+top to bottom direction
+Visiteur <|-- Guide
+
+Visiteur --> (Gestion de compte)
+(Gestion de compte) --> (Creer un compte)
+(Gestion de compte) --> (Supprimer son compte)
+(Gestion de compte) --> (Se Connecter)
+(Gestion de compte) --> (Se Deconnecter)
+(Gestion de compte) --> (Visionner les parametres de son compte)
+(Gestion de compte) --> (Modifier les parametres de son compte)
+(Gestion de compte) --> (Devenir guide)
+
+@enduml
+
+@startuml
+'default
+top to bottom direction
+Visiteur <|-- Guide
+
+Visiteur --> (Carnet de voyage)
+(Carnet de voyage) --> (Poster du contenu)
+(Carnet de voyage) --> (Commenter une visite)
+(Carnet de voyage) --> (Commenter une publication)
+(Carnet de voyage) --> (Modifier du contenu)
+(Carnet de voyage) --> (Visionner son carnet de voyage)
+(Carnet de voyage) --> (Visionner le carnet d'un utilisateur)
+(Carnet de voyage) --> (Partager du contenu sur les réseaux sociaux)
+(Carnet de voyage) --> (Modifier la confidentialité)
+
+@enduml
+
+@startuml
+'default
+top to bottom direction
+Visiteur <|-- Guide
+
+Visiteur --> (Mise en relation)
+(Mise en relation) --> (Discuter par messagerie)
+(Mise en relation) --> (Demander une visite)
+
+@enduml
+
+@startuml
+'default
+top to bottom direction
+Visiteur <|-- Guide
+
+Visiteur --> (Historique)
+(Historique) --> (Consulter l'historique de paiement)
+(Historique) --> (Consulter l'historique de notation)
+(Historique) --> (Consulter l'historique de recherche)
+
+@enduml
+
+@startuml
+'default
+top to bottom direction
+Visiteur <|-- Guide
+
+Visiteur --> (Paiement)
+(Paiement) --> (Effectuer un paiement)
+(Paiement) --> (Faire une réclamation)
+(Paiement) --> (Demander un remboursement)
+
+@enduml
+
+@startuml
+'default
+top to bottom direction
+Visiteur <|-- Guide
+
+Visiteur --> (Notation)
+(Notation) --> (Noter une visite)
+(Notation) --> (Noter un utilisateur)
+
+@enduml
+
+@startuml
+'default
+top to bottom direction
+
+Guide --> (Gains)
+(Gains) --> (Visionner ses gains)
+(Gains) --> (Récupérer ces gains)
+
+@enduml
+
+@startuml
+'default
+top to bottom direction
+
+Guide --> (Annonces)
+(Annonces) --> (Créer une annonce)
+(Annonces) --> (Accepter une visite)
+(Annonces) --> (Refuser une visite)
+(Annonces) --> (Modifier son status actuel de disponibilité)
+(Annonces) --> (Modifier une annonce)
+(Annonces) --> (Visionner ses annonces)
+(Annonces) --> (Activer une annonce)
+(Annonces) --> (Désactiver une annonce)
+
+@enduml

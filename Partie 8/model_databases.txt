@@ -1,0 +1,143 @@
+﻿@startuml
+
+class Compte {
+	String NomUtilisateur
+	Hash MotDePassse
+	Bool estGuide
+	ENUM Status {0 : En attente de validation, 1 : Actif, 2 : Supprime, 3 : Banni}
+	Bool estConnecte
+	int CodeLangue
+	int idVisiteur
+	int idGuide
+}
+
+class Profil {
+	String Nom
+	String Prenom
+	Date DateDeNaissance
+	ENUM Sexe {0 : Femme, 1 : Homme}
+	String Email
+	int numTel
+	String Ville
+	String DescriptionPerso
+	List<String> CentresDInterets
+	String Photo
+}
+
+class Visiteur {
+	int idProfil
+	int idHistorique
+	int idCarnetDeVoyage
+	List<int> VisitesDemandees
+	List<int> VisitesConfirmees
+}
+
+class Historique {
+	List<int> idVisitesEffectuees
+	List<int> idRecherches
+}
+
+class Recherche {
+	String Entrée
+	Date date
+	List<String> Filtres
+}
+
+class Paiement {
+	float montant
+	int idVisite
+	int idVisiteur
+	int idGuide
+	ENUM Status {0 : OK, 1: Annule, 2 : Rembourse, 3 : En cours, 4 : Reclamation}
+	Date date
+}
+
+class Notation {
+	int noteVisite
+	int noteUser
+	int idVisite
+	int idNotant
+	int idNote
+	String Commentaire
+	ENUM Status {0 : OK, 1 : Non note}
+	Date date
+}
+
+class Visite {
+	List<int> idVisiteur
+	int idGuide
+	int idNotation
+	int idPaiement
+	ENUM Status {0 : Demande, 1 : Confirmee, 2 : Refusee, 3: En cours, 4 : Effectuee, 5 : Annulee}
+	List<int> idMessage
+	Date date
+}
+
+class Message {
+	String Message
+	Date date
+}
+
+class Annonce {
+	String Titre
+	String Description
+	int idGuide
+	int idLieux
+	List<Jour> horaires
+	ENUM Status {0 : Activee, 1: Désactivee 2 : Terminee}
+}
+
+class Jour {
+	Date début
+	Date fin
+}
+
+class Lieux {
+	String Pays
+	String Ville
+	String Quartier
+	int latitude
+	int longitude
+	int codePostal
+	int idInfosLieux
+}
+
+Visiteur <|-- Guide
+
+class Guide {
+  Bool estIndisponible
+  List<int> idAnnonce
+  List<int> VisitesDemandees
+  List<int> VisitesConfirmees
+
+}
+
+class InfosLieux {
+	String Description
+	String BonsPlan
+	String InfosLegales
+	List<String> Medias
+}
+
+class CarnetDeVoyage {
+	List<int> idPosts
+}
+
+class Post {
+	int idVisite
+	String Titre
+	String Description
+	List<String> Medias
+	String Status
+	List<int> idCommentaires
+	ENUM confidentialité {0: privee, 1: co-visteurs, 2: public}
+}
+
+class Commentaire {
+	int idCommentateur
+	int idPost
+	String Commentaire
+	Date date
+}
+
+@enduml

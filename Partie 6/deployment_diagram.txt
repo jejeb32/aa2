@@ -1,0 +1,24 @@
+@startuml
+
+actor Utilisateur
+ 
+node "Navigateur web" as web_browser {
+}
+
+node "Serveur web" as web_server {
+[Interface web]
+[Interface base de données]
+[Fichier de log]
+}
+
+database "Serveur de Base de données" as database_server {
+[Mongodb]
+} 
+
+Utilisateur <--> web_browser
+web_browser <--> [Interface web]
+[Interface web] <--> [Interface base de données]
+[Interface base de données] --> [Fichier de log]
+[Interface base de données] <--> [Mongodb]
+
+@enduml

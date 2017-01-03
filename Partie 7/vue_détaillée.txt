@@ -1,0 +1,73 @@
+﻿@startuml
+
+package Client <<Node>> { 
+
+	class Stockage {
+		var content
+		var error
+
+		void onRequest()
+		void onSuccess(var content)
+		void onError(var error)	
+	}
+	
+	class React.Component {
+		var state
+		var props
+
+		void setState()
+		void render()
+	}
+
+	class React.Component <|-- class Vue
+
+	class Vue {
+	}
+	
+	class Actions {
+		void generateActions(String Action, String Success, String Error)
+	}
+	
+	class Service {
+		void getApiData()
+	}
+
+	class Vue --> class Actions
+	class Actions --> class Service
+	
+	class Stockage ..> class Vue
+}
+
+package Serveur <<Cloud>> {
+
+	class Service --> class Routeur
+	class Manager --> class Stockage
+	class Routeur {
+		void middleware(string route, function(var request, var response))
+		void get(string route, function(var request, var response))
+		void post(string route, function(var request, var response))
+		void put(string route, function(var request, var response))
+		void delete(string route, function(var request, var response))
+	}
+	
+	class Manager {
+		void get(var params)
+		void post(var params)
+		void put(var params)
+		void delete(var params)
+	}
+	
+	note top of Modele : Chaque classe modele decrit une des tables de la base de donnees decrite en partie 8
+	class Modele {
+		Json Modele
+	}
+
+	class Routeur --> class Manager
+	class Manager --> class Modele
+	class Modele --> class Manager
+}
+package MongoDB <<Database>> {
+	class donnees --> class Modele
+}
+
+@enduml

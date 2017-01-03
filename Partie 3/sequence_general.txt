@@ -1,0 +1,17 @@
+@startuml
+
+Visiteur -> (Recherche)
+Visiteur -> (Profil)
+Visiteur -> (Gestion de compte)
+Visiteur -> (Carnet de voyage)
+Visiteur -> (Mise en relation)
+Visiteur -> (Historique)
+Visiteur -> (Paiement)
+Visiteur -> (Notation)
+
+Visiteur <|-- Guide
+
+Guide -> (Gains)
+Guide -> (Annonces)
+
+@enduml
