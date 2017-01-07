@@ -5,9 +5,15 @@ actor Utilisateur
 node "Navigateur web" as web_browser {
 }
 
-node "Serveur web" as web_server {
+node "Interface API externe" as extern_api {
+}
+
+node "Application mobile" as mobile_app {
+}
+
+node "Serveur Web" as api_server {
 [Interface web]
-[Interface base de données]
+[Interface base de donnees]
 [Fichier de log]
 }
 
@@ -16,9 +22,13 @@ database "Serveur de Base de données" as database_server {
 } 
 
 Utilisateur <--> web_browser
-web_browser <--> [Interface web]
-[Interface web] <--> [Interface base de données]
-[Interface base de données] --> [Fichier de log]
-[Interface base de données] <--> [Mongodb]
+Utilisateur <--> mobile_app
+web_browser <-- [Interface web]
+[Interface base de donnees] --> [Fichier de log]
+[Interface base de donnees] <--> [Mongodb]
+web_browser <--> [Interface base de donnees] : "Protocole HTTPS"
+web_browser <--> extern_api
+mobile_app <--> [Interface base de donnees] : "Protocole HTTPS"
+mobile_app <--> extern_api
 
 @enduml

@@ -1,8 +1,11 @@
 ﻿@startuml
 
 class Compte {
-	String NomUtilisateur
-	Hash MotDePassse
+	String Nom
+	String Prenom	
+	Hash MotDePasse
+	String Email
+	int numTel
 	Bool estGuide
 	ENUM Status {0 : En attente de validation, 1 : Actif, 2 : Supprime, 3 : Banni}
 	Bool estConnecte
@@ -12,12 +15,9 @@ class Compte {
 }
 
 class Profil {
-	String Nom
-	String Prenom
+	
 	Date DateDeNaissance
 	ENUM Sexe {0 : Femme, 1 : Homme}
-	String Email
-	int numTel
 	String Ville
 	String DescriptionPerso
 	List<String> CentresDInterets
